@@ -1,0 +1,1039 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+/* Loader Styles */
+
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    overflow-x: hidden;
+    background: url('assets/gulmarg-meadows-bg.jpg') no-repeat center center fixed;
+    /* Replace 'background-image.jpg' with the actual image name */
+    background-size: cover;
+    /* Ensure the image covers the entire viewport */
+    display: flex;
+    /* Use Flexbox for the layout */
+    min-height: 100vh;
+    /* Ensure the body takes up the full height */
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom right, #3b82f6, #9333ea, #ec4899);
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.breathing {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 50%;
+    animation: breathing 2s infinite;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Breathing Circle Animation */
+
+.breathing-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #00000023;
+    /* Dark background for contrast */
+    backdrop-filter: blur(10px);
+    /* Blur effect for the background */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+
+}
+
+.breathing-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    animation: breathing 4s ease-in-out infinite;
+    position: relative;
+}
+
+.breathing-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    z-index: 1;
+}
+
+/* Breathing Animation */
+@keyframes breathing {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+}
+
+/* Hide Loader */
+#loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Initially hide main content */
+#content {
+    margin-left: 12rem;
+    /* Matches the sidebar width */
+    padding: 2rem;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: white;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+#content.loaded {
+    opacity: 1;
+}
+
+/* Fade-in effect */
+.fade-in {
+    opacity: 1 !important;
+}
+
+/* Collapsible Sections */
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+.collapsible-content.active {
+    max-height: 500px;
+    /* Adjust based on content size */
+    opacity: 1;
+}
+
+.active .collapsible-content {
+    max-height: 200px;
+    opacity: 1;
+}
+
+/* Collapsible Button Styling */
+.toggle-collapse {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Arrow Styling */
+.toggle-collapse .arrow {
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+    /* Smooth rotation */
+}
+
+/* Rotate arrow when active */
+.collapsible-content.active+.arrow {
+    transform: rotate(180deg);
+    /* Rotate arrow to point upwards */
+}
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    transition: background 0.5s;
+}
+
+.dark-mode .toggle-container {
+    background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
+}
+
+.toggle-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-slider {
+    width: 80px;
+    height: 40px;
+    background: #d1d5db;
+    border-radius: 9999px;
+    position: relative;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+.toggle-slider::before {
+    content: '\f185';
+    /* Sun icon */
+    font-family: 'Phosphor';
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    top: 2px;
+    left: 2px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #facc15;
+    transition: transform 0.3s, color 0.3s, background 0.3s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+input:checked+.toggle-slider {
+    background: #4f46e5;
+}
+
+input:checked+.toggle-slider::before {
+    content: '\f186';
+    /* Moon icon */
+    transform: translateX(40px);
+    color: #ffffff;
+    background: #4f46e5;
+}
+
+.toggle-input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+/* Tooltip container */
+a {
+    position: relative;
+}
+
+/* Tooltip text */
+a::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    /* Position above the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Show tooltip on hover */
+a:hover::after {
+    opacity: 1;
+}
+
+/* Logo Styling */
+#sidebar h2 span img {
+    width: 200px;
+    height: auto;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#sidebar h2 span img:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo Styling */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+    /* margin-bottom: 1.5rem; */
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* Sidebar Styling */
+#sidebar {
+    position: fixed;
+    /* Fix the sidebar to the screen */
+    top: 0;
+    left: 0;
+    width: 12rem;
+    /* Sidebar width */
+    height: 100vh;
+    /* Full height of the viewport */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    /* Ensure it stays above other elements */
+}
+
+#sidebar h2 {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+#sidebar ul li {
+    margin-bottom: 1.5rem;
+}
+
+#sidebar ul li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 1.25rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+#sidebar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Active Navigation Link Styling */
+#sidebar ul li a.active {
+    background-color: rgba(255, 255, 255, 0.3);
+    /* Highlight the active link */
+    color: #ffffff;
+    /* Ensure the text color is white */
+    font-weight: bold;
+    /* Make the active link bold */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* Add a subtle shadow */
+    border-left: 4px solid #16c60c;
+    /* Add a left border to indicate active state */
+    padding-left: calc(1rem - 4px);
+    /* Adjust padding to account for the border */
+}
+
+#sidebar ul li a.active:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    /* Slightly brighter on hover */
+}
+
+/* Tooltip Styling */
+#sidebar ul li a::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#sidebar ul li a:hover::after {
+    opacity: 1;
+}
+
+/* Main Content Styling */
+#content {
+    margin-left: 14rem;
+    ;
+    /* Matches the sidebar width */
+    padding: 2rem;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#content h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: transparent;
+    /* Make the text transparent */
+    background: linear-gradient(120deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1) 100%);
+    background-size: 200% auto;
+    /* Make the gradient larger for smooth animation */
+    -webkit-background-clip: text;
+    /* Clip the gradient to the text */
+    background-clip: text;
+    animation: diamond-shine-text 3s linear;
+    animation-duration: 5s;
+    /* Infinite animation */
+    /* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
+    /* Add a subtle shadow for depth */
+}
+
+/* Diamond-Like Shine Animation Through Text */
+@keyframes diamond-shine-text {
+    0% {
+        background-position: 0% 50%;
+        /* Start the gradient at the left */
+    }
+
+    100% {
+        background-position: 200% 50%;
+        /* Move the gradient to the right */
+    }
+}
+
+#content p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+}
+
+/* Meditation Thought Section */
+#content .fade-in {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.2));
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Collapsible Sections */
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0;
+    padding: 0 1rem;
+}
+
+.collapsible-content.active {
+    max-height: 500px;
+    opacity: 1;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Collapsible Button Styling */
+.toggle-collapse {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 1.25rem;
+}
+
+.toggle-collapse:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    /* transform: scale(1.02); */
+}
+
+/* Arrow Styling */
+.toggle-collapse .arrow {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.collapsible-content.active+.arrow {
+    transform: rotate(180deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #sidebar {
+        flex: 0 0 10rem;
+        /* Reduce sidebar width for smaller screens */
+    }
+
+    #content h1 {
+        font-size: 2.5rem;
+    }
+
+    #content p {
+        font-size: 1rem;
+    }
+}
+
+/* Music Container */
+#music-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Dynamic grid layout */
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+/* Music Card Styling */
+.music-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.music-card:hover {
+    transform: scale(1.05);
+    /* Slightly enlarge on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    /* Add shadow on hover */
+}
+
+.music-card img {
+    border-radius: 8px;
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.music-card h3 {
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Truncate long titles */
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+audio {
+    outline: none;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Music Cards */
+.music-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 1rem;
+}
+
+.music-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.music-card h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.music-card audio {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* Navbar Styling */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* width: 15.5rem; */
+    /* height: 100vh; */
+    /* backdrop-filter: blur(10px); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem;
+    z-index: 1100;
+    /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); */
+}
+
+nav h1 {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+nav ul li {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 1.25rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Collapsible Container */
+.collapsible-container {
+    margin: 1rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2));
+    /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+}
+
+.collapsible-container:hover {
+    /* transform: scale(1.02); */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Collapsible Button */
+.toggle-collapse {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+    outline: none;
+    width: 100%;
+    text-align: left;
+}
+
+/* Arrow Icon */
+.toggle-collapse .arrow {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.collapsible-content.active+.arrow {
+    transform: rotate(180deg);
+    /* Rotate arrow when active */
+}
+
+/* Collapsible Content */
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    /* transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out; */
+}
+
+.collapsible-content.active {
+    max-height: 500px;
+    /* Adjust based on content size */
+    opacity: 1;
+    padding: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Collapsible Content Text */
+.collapsible-content p {
+    margin: 0;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+/* Responsive Design for Collapsible Sections */
+@media (max-width: 768px) {
+    .toggle-collapse {
+        font-size: 1rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .collapsible-content p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Scene Cards Section */
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.grid-cols-1 {
+    grid-template-columns: 1fr;
+}
+
+.sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Scene Card Styling */
+.scene-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scene-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.scene-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Scene Content */
+.scene-content {
+    padding: 1rem;
+    text-align: center;
+}
+
+.scene-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.scene-description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .scene-image {
+        height: 150px;
+    }
+
+    .scene-title {
+        font-size: 1.25rem;
+    }
+
+    .scene-description {
+        font-size: 0.9rem;
+    }
+}
+
+/* Scene Cards */
+.scene-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scene-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.scene-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.scene-card h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+/* Video Cards */
+.video-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 300px;
+    /* Set a consistent height for all video cards */
+}
+
+.video-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.video-card video {
+    width: 100%;
+    height: 200px;
+    /* Ensure the video takes up a fixed height */
+    object-fit: cover;
+    /* Maintain aspect ratio and crop overflow */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.video-card h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+    margin: 0.5rem 0;
+    text-align: center;
+    padding: 0 0.5rem;
+    flex-grow: 1;
+    /* Ensure the title stays consistent */
+}
+
+.video-card .p-4 {
+    padding: 0.5rem;
+    text-align: center;
+}
+
+/* Audio Availability Message */
+.video-card p {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #sidebar {
+        width: 12rem;
+    }
+
+    main {
+        margin-left: 12rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+}
+
+/* Contact Form Styling */
+form {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    color: white;
+}
+
+form label {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: #60a5fa;
+    /* Light blue border on focus */
+    box-shadow: 0 0 8px rgba(96, 165, 250, 0.5);
+    /* Glow effect */
+}
+
+form button {
+    display: inline-block;
+    background: #3b82f6;
+    /* Blue background */
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background: #2563eb;
+    /* Darker blue on hover */
+    transform: scale(1.05);
+    /* Slight zoom effect */
+}
+
+form button:active {
+    transform: scale(0.95);
+    /* Slight shrink effect on click */
+}
+
+/* Fullscreen Modal */
+#fullscreen-modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    /* Dark background */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+#fullscreen-modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+}
+
+#fullscreen-modal button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    color: white;
+    padding: 0.25rem .5rem;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: not-allowed;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, cursor 0.3s ease;
+}
+
+#fullscreen-modal button.enabled {
+    cursor: pointer;
+    /* Enable cursor after countdown */
+    opacity: 1;
+    /* Fully visible after countdown */
+}

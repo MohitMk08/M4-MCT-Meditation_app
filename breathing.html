@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breathing Exercises - Meditiva</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body class="min-h-screen flex bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500">
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div id="content" class="flex-1 p-6 flex flex-col items-center justify-center">
+        <h1 class="text-4xl font-bold text-white mb-6">🌬️ Breathing Exercises</h1>
+        <p class="text-lg text-white/80 mb-6">
+            Follow the animation below to practice your breathing.
+        </p>
+
+        <!-- Breathing Animation -->
+        <div class="breathing-wrap">
+            <div class="breathing-circle">
+                <p class="breathing-text">Breathe In</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dynamically load the navbar
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('sidebar').innerHTML = data;
+            });
+
+        // Breathing text animation
+        const breathingText = document.querySelector('.breathing-text');
+        const breathingStates = ['Breathe In', 'Hold', 'Breathe Out', 'Hold'];
+        let currentStateIndex = 0;
+
+        setInterval(() => {
+            currentStateIndex = (currentStateIndex + 1) % breathingStates.length;
+            breathingText.textContent = breathingStates[currentStateIndex];
+        }, 4000); // Change text every 4 seconds
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relaxing Music</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body class="min-h-screen flex bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500">
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div id="content" class="flex-1 p-6">
+        <h1 class="text-4xl font-bold text-white mb-6">Relaxing Music</h1>
+        <p class="text-lg text-white/80 mb-6">
+            Explore a collection of relaxing music tracks to help you unwind and find peace.
+        </p>
+
+        <!-- Music Page Images -->
+        <div id="music-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="music-card">
+                <img src="path-to-image.jpg" alt="Music Image" class="music-image">
+            </div>
+            <!-- Add more music cards dynamically -->
+        </div>
+    </div>
+
+    <!-- Fullscreen Modal -->
+    <div id="fullscreen-modal"
+         class="hidden fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
+        <div class="relative">
+            <img id="fullscreen-image" src="" alt="Fullscreen Image" class="max-w-full max-h-screen">
+            <button id="close-fullscreen" class="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg">
+                Close (<span id="countdown">5</span>)
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Dynamically load the navbar
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('sidebar').innerHTML = data;
+            });
+    </script>
+</body>
+
+</html>

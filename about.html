@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Meditiva</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body class="min-h-screen flex bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500">
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <div id="content" class="flex-1 p-6">
+        <h1 class="text-4xl font-bold text-white mb-6">About Meditiva</h1>
+        <p class="text-lg text-white/80 mb-6">
+            Meditiva is your companion for mindfulness and relaxation. Our mission is to help you find inner peace and
+            balance in your daily life through meditation, music, and beautiful scenes.
+        </p>
+
+        <div class="bg-white/20 backdrop-blur-lg shadow-lg rounded-xl p-6">
+            <h2 class="text-2xl font-bold text-white mb-4">✨ Our Vision ✨</h2>
+            <p class="text-white text-lg">
+                We believe in the power of mindfulness and meditation to transform lives. Our platform is designed to
+                provide you with tools to relax, focus, and grow.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Dynamically load the navbar
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('sidebar').innerHTML = data;
+            });
+    </script>
+</body>
+
+</html>
